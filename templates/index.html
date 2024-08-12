@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css">
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center mt-4">
+        <div class="col text-center">
+            <span style="color: green; font-weight: bold;">
+                <h4>Gemini API Developer Competition</h4>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col text-center">
+            <span style="color: darkgray; font-weight: bold;">
+                <h5>"Multilingual ChatBot"</h5>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="container text-center mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="card-title">Login</h1>
+                      <!-- Flash messages -->
+                    {% with messages = get_flashed_messages() %}
+                        {% if messages %}
+                            <div class="alert alert-success" role="alert">
+                                {{ messages[0] }}
+                            </div>
+                        {% endif %}
+                    {% endwith %}
+                        <form action="/login" method="post">
+                            <div class="form-group">
+                                <input type="text" name="username" placeholder="Username" required class="form-control mb-3">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" name="password" placeholder="Password" required class="form-control mb-3">
+                            </div>
+                            <button type="submit" class="btn btn-warning btn-block">Login</button>
+                        </form>
+                        <a href="/register" class="btn btn-link mt-3">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

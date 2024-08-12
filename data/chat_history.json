@@ -1,0 +1,44 @@
+[
+    {
+        "timestamp": "2024-08-12 21:10:18",
+        "sequence": 1,
+        "sender": "user",
+        "message": "what are the symptoms of the flu?"
+    },
+    {
+        "timestamp": "2024-08-12 22:55:48",
+        "sequence": 2,
+        "sender": "user",
+        "message": "hi?"
+    },
+    {
+        "timestamp": "2024-08-12 22:55:49",
+        "sequence": 3,
+        "sender": "bot",
+        "message": "Hi there! What can I do for you?"
+    },
+    {
+        "timestamp": "2024-08-12 23:51:28",
+        "sequence": 4,
+        "sender": "user",
+        "message": "hi?"
+    },
+    {
+        "timestamp": "2024-08-12 23:51:29",
+        "sequence": 5,
+        "sender": "bot",
+        "message": "Hi there! What can I do for you?"
+    },
+    {
+        "timestamp": "2024-08-13 00:13:51",
+        "sequence": 6,
+        "sender": "user",
+        "message": "hi?"
+    },
+    {
+        "timestamp": "2024-08-13 00:13:52",
+        "sequence": 7,
+        "sender": "bot",
+        "message": "Hi there! What can I do for you?"
+    }
+]

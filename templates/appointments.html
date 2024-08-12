@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointments</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include custom stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Custom styles can be added here */
+        .appointment-container {
+            margin-top: 20px;
+        }
+        .appointment-details {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .appointment-form {
+            background-color: #ffffff;
+            padding: 20px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<!-- Return Button -->
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="{{ url_for('chat_page') }}" class="btn btn-warning" style="display: inline-block; padding: 10px 20px;">Return to Chat</a>
+                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                <div class="appointment-container">
+                    <h2 class="text-center">Book Appointment</h2>
+                    <!-- Appointment Form -->
+                    <div class="appointment-form">
+                        <form action="/add_appointment" method="POST">
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="date">Date:</label>
+                                <input type="date" id="date" name="date" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Time:</label>
+                                <input type="time" id="time" name="time" class="form-control" required>
+                            </div>
+	           <div class="form-group">
+                                <label for="doctor">Preferred Doctor:</label>
+                                <input type="text" id="doctor" name="doctor" class="form-control" required>
+                            </div>
+                                <div class="form-group">
+                                <label for="hospital">Name of the Hospital:</label>
+                                <input type="text" id="hospital" name="hospital" class="form-control" required>
+                            </div>
+                            <button type="submit" class="btn btn-warning btn-block">Book Appointment</button>
+                        </form>
+                    </div>
+
+                    <!-- Appointment Details Display -->
+                    <div class="appointment-details">
+                        <h2 class="text-center">Appointments</h2>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Preferred Doctor</th>
+                                    <th>Hospital</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+   	          {% for appointment in appointments %}
+    	              <tr>
+        		<td>{{ appointment.name }}</td>
+        		<td>{{ appointment.email }}</td>
+        		<td>{{ appointment.date }}</td>
+        		<td>{{ appointment.time }}</td>
+        		<td class="py-20">{{ appointment.doctor }}</td> <!-- Apply Bootstrap utility class for padding -->
+        		<td class="py-20">{{ appointment.hospital }}</td> <!-- Apply Bootstrap utility class for padding -->
+    	          </tr>
+  		  {% endfor %}
+	          </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Return Button -->
+                    <div style="text-align: center; margin-top: 20px;">
+                        <a href="{{ url_for('chat_page') }}" class="btn btn-info" style="display: inline-block; padding: 10px 20px;">Return to Chat</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Include custom scripts -->
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>

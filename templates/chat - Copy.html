@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poly Talk AI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .marquee-container {
+            background-color: #f0f0f0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .marquee-text {
+            display: inline-block;
+            color: brown;
+            animation: marquee 30s linear infinite;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+    <script>
+        const chatBotAvatarUrl = "{{ url_for('static', filename='ChatBotAvatar.jpg') }}";
+        const customerUrl = "{{ url_for('static', filename='Customer.jpg') }}";
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center mt-4">
+            <div class="col text-center">
+                <h4 style="color: green; font-weight: bold;">Gemini API Developer Competition</h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col text-center">
+                <h5 style="color: Green; font-weight: bold;">"Multilingual: PolyTalk AI ChatBot"</h5>
+            </div>
+        </div>
+    </div>
+    <div class "container">
+       <div class="row justify-content-center">
+          <div class="col-md-2">
+            <div style="text-align: center;">
+                <a href="{{ url_for('helps') }}" class="btn btn-info" style="display: inline-block; padding: 10px 20px;">Chatbot: Help</a>
+            </div>
+          </div>
+        </div>
+     </div>
+    <div class="marquee-container">
+    <div class="marquee-text">
+        <b>Help: </b>1. Firstly click the <b>"Multilingual ChatBot HELP" </b>button on "TOP" 2. Click any language in the left-hand side menu bar <b>"Language Menu" </b>3. Copy and paste the questions (using return chat button) in the chatbox.
+    </div>
+  </div>
+    <section style="background-color: #eee;">
+        <div class="container py-5">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-8 col-lg-6 col-xl-4">
+                    <div class="card" id="chat1">
+                        <div class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0">
+                            <i class="fas fa-angle-left"></i>
+                            <p class="mb-0 fw-bold">Live chat</p>
+                            <i class="fas fa-times"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="chat-box"></div>
+                        </div>
+                        <div class="card-footer p-3 bg-white border-top-0">
+                            <div class="chat-input">
+                                <textarea class="form-control bg-body-tertiary" id="textAreaExample" rows="1" placeholder="Type your message..."></textarea>
+                                <button id="sendMessageButton"><i class="fas fa-paper-plane"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="video-container text-center">
+                <div class="video-title">
+                    <h4 style="color: green; font-weight: bold;">SupportClip</h4>
+                </div>
+                <div class="row justify-content-center mb-2">
+                    <div class="col-md-2">
+                        <button id="playButton" class="btn btn-info">Play Video</button>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6 col-xl-4">
+                        <video id="videoPlayer" width="400" height="300" controls>
+                            <source src="{{ url_for('static', filename='help.mp4') }}" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  <div class="container mt-4">
+    <h4 style="color: green; font-weight: bold;">Navigation</h4>
+    <hr>
+    <div class="row justify-content-center">
+        <div class="col-md-3">
+            <div style="text-align: center;">
+                <a href="{{ url_for('appointments') }}" class="btn btn-info" style="display: inline-block; padding: 10px 20px;">Book Appointment</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div style="text-align: center;">
+                <a href="{{ url_for('chat_history_view') }}" class="btn btn-info" style="display: inline-block; padding: 10px 20px;">Chat History</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div style="text-align: center;">
+                <a href="{{ url_for('chat_logs_view') }}" class="btn btn-info" style="display: inline-block; padding: 10px 20px;">Chat Logs</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div style="text-align: center;">
+                <a href="{{ url_for('helps') }}" class="btn btn-info" style="display: inline-block; padding: 10px 20px;">How to Use Chatbot</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    </section>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+    <script>
+        document.getElementById('playButton').addEventListener('click', function() {
+            var video = document.getElementById('videoPlayer');
+            video.play();
+        });
+    </script>
+</body>
+</html>

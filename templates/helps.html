@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Query Chatbot Help</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            height: 100vh;
+            width: 220px;
+            background-color: #f8f9fa;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+            border-right: 1px solid #ddd;
+        }
+
+        .navbar-nav {
+            flex-direction: column;
+        }
+
+        .navbar-nav .nav-link {
+            color: #007bff;
+            font-weight: bold;
+            border-radius: 0;
+            padding: 10px 15px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar-nav .nav-link.active,
+        .navbar-nav .nav-link:hover {
+            background-color: #ffebef;
+            color: #007bff;
+        }
+
+        .container {
+            margin-left: 240px;
+            padding: 20px;
+            width: calc(100% - 240px);
+        }
+
+        .content-section {
+            display: none;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        .language-menu {
+            margin-bottom: 20px;
+        }
+
+        .language-menu .nav-link {
+            font-weight: normal;
+            border-radius: 0;
+            padding: 10px 15px;
+        }
+
+        .language-menu .nav-link.active {
+            background-color: #f1c6c6;
+            color: #007bff;
+        }
+           .language-menu .heading {
+            font-size: 1.2rem; /* Reduced font size */
+            font-weight: bold;
+            color: #343a40;
+            text-align: center;
+            margin-bottom: 10px;
+        }                                                  
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">PolyTalk AI Chatbot Help</a>
+        <div class="navbar-nav">
+            <a class="nav-link" href="#" data-target="#general-health" onclick="showSection(event, '#general-health')">General Health Information</a>
+            <a class="nav-link" href="#" data-target="#appointment" onclick="showSection(event, '#appointment')">Appointment Scheduling</a>
+            <a class="nav-link" href="#" data-target="#insurance" onclick="showSection(event, '#insurance')">Insurance and Billing</a>
+            <a class="nav-link" href="#" data-target="#medications" onclick="showSection(event, '#medications')">Medications and Prescriptions</a>
+        </div>
+    </nav>
+
+    <div class="container mt-5 pt-4">
+        <!-- Language Menu -->
+        <nav class="navbar navbar-light bg-light language-menu">
+            <a href="{{ url_for('chat_page') }}" class="btn btn-warning" style="display: inline-block; padding: 10px 20px;">Return to Chat</a>
+            <p class="heading">Language Menu</p>
+            <a class="nav-link" href="#" data-lang="en" onclick="showLanguageContent(event, 'en')">English</a>
+            <a class="nav-link" href="#" data-lang="es" onclick="showLanguageContent(event, 'es')">Español</a>
+            <a class="nav-link" href="#" data-lang="fr" onclick="showLanguageContent(event, 'fr')">Français</a>
+            <a class="nav-link" href="#" data-lang="ko" onclick="showLanguageContent(event, 'ko')">한국어</a>
+            <a class="nav-link" href="#" data-lang="ja" onclick="showLanguageContent(event, 'ja')">日本語</a>
+            <a class="nav-link" href="#" data-lang="de" onclick="showLanguageContent(event, 'de')">Deutsch</a>
+        </nav>
+        <h1>Help: PolyTalk: AI Chatbot : Rule Based Project: Health Symptoms</h1>
+        <!-- General Health Information -->
+        <div id="general-health-en" class="content-section">
+            <div class="card">
+                <div class="card-header">General Health Information</div>
+                <div class="card-body">
+                    <p>Users can ask about common health issues such as "flu," "cold," "sinus," "heartburn," and "allergies."</p>
+                    <h5 class="card-title">Example Queries:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"What are the symptoms of the flu?"</li>
+                        <li class="list-group-item">"How can I manage chronic back pain?"</li>
+ 	      <li class="list-group-item">"What are the symptoms of conjunctivitis (pink eye)?"</li>
+                        <li class="list-group-item">"How can I manage asthma symptoms?"</li>
+                        <li class="list-group-item">"How can I relieve heartburn?"</li>
+                        <li class="list-group-item">"How can I prevent seasonal allergies?"</li>
+
+                       </ul>
+                </div>
+            </div>
+        </div>
+        <div id="general-health-es" class="content-section">
+            <div class="card">
+                <div class="card-header">Información General de Salud</div>
+                <div class="card-body">
+                    <p>Los usuarios pueden preguntar sobre problemas de salud comunes como "gripe", "resfriado", "sinusitis", "ardor de estómago" y "alergias".</p>
+                    <h5 class="card-title">Consultas Ejemplares:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"Quels sont les symptômes de la grippe ?"</li>
+    	      <li class="list-group-item">"Quels sont les symptômes du COVID-19 ?"</li>
+                        <li class="list-group-item">"Comment puis-je traiter un rhume à la maison ?"</li>
+                        <li class="list-group-item">"Quels sont les symptômes de l'angine streptococcique ?"</li>
+                        <li class="list-group-item">"¿Cuáles son los síntomas de la sinusitis (infección de los senos nasales)?"</li>
+                        <li class="list-group-item">"¿Cómo puedo prevenir las infecciones de oído?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="general-health-fr" class="content-section">
+            <div class="card">
+                <div class="card-header">Informations Générales sur la Santé</div>
+                <div class="card-body">
+                    <p>Les utilisateurs peuvent poser des questions sur des problèmes de santé courants tels que "grippe", "rhume", "sinusite", "brûlures d'estomac" et "allergies".</p>
+                    <h5 class="card-title">Exemples de Questions :</h5>
+                    <ul class="list-group list-group-flush">
+                         <li class="list-group-item">"Quels sont les symptômes de la grippe ?"</li>
+                         <li class="list-group-item">"Quels sont les symptômes du COVID-19 ?"</li>
+                         <li class="list-group-item">"Comment puis-je traiter un rhume à la maison ?"</li>
+                         <li class="list-group-item">"Quels sont les symptômes de l'angine streptococcique ?"</li>
+                         <li class="list-group-item">"Comment puis-je prévenir les allergies saisonnières ?"</li>
+                         <li class="list-group-item">"Quels sont les symptômes de la sinusite (infection des sinus) ?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="general-health-ko" class="content-section">
+            <div class="card">
+                <div class="card-header">일반 건강 정보</div>
+                <div class="card-body">
+                    <p>사용자는 "독감", "감기", "부비동염", "속쓰림" 및 "알레르기"와 같은 일반적인 건강 문제에 대해 질문할 수 있습니다.</p>
+                    <h5 class="card-title">예제 질문:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"如果我覺得我作為患者的權利受到侵犯，我該怎麼辦？"</li>
+    	      <li class="list-group-item">"我有權獲得有關我的治療計劃和選擇的哪些信息？"</li>
+                       <li class="list-group-item">"我可以查閱我的病歷並在必要時要求修改嗎？"</li>
+                       <li class="list-group-item">"如果我選擇這樣做，我可以拒絕或停止治療嗎？"</li>
+                       <li class="list-group-item">"我如何向其他醫療保健提供者尋求第二意見？"</li>
+                       <li class="list-group-item">"作為患者，我在付款和保險資訊方面的責任是什麼？"</li>
+                       <li class="list-group-item">"我如何參與有關我的醫療保健和治療的決策？"</li>
+                       <li class="list-group-item">"如果我對自己的護理或治療有疑慮或投訴，我該怎麼辦？"</li>
+                       <li class="list-group-item">"是否有醫療保健提供者必須遵循的病患隱私和保密準則？"</li>
+                       </ul>
+                </div>
+            </div>
+        </div>
+        <div id="general-health-ja" class="content-section">
+            <div class="card">
+                <div class="card-header">一般的な健康情報</div>
+                <div class="card-body">
+                    <p>ユーザーは「インフルエンザ」、「風邪」、「副鼻腔炎」、「胸やけ」、および「アレルギー」などの一般的な健康問題について質問できます。</p>
+                    <h5 class="card-title">例：</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"インフルエンザの症状は何ですか？"</li>
+                        <li class="list-group-item">"胸やけを和らげる方法は？"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="general-health-de" class="content-section">
+            <div class="card">
+                <div class="card-header">Allgemeine Gesundheitsinformationen</div>
+                <div class="card-body">
+                    <p>Benutzer können Fragen zu häufigen Gesundheitsproblemen wie "Grippe", "Erkältung", "Sinusitis", "Sodbrennen" und "Allergien" stellen.</p>
+                    <h5 class="card-title">Beispielanfragen:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"¿Cómo puedo tratar un resfriado en casa?"</li>
+                        <li class="list-group-item">"¿Cómo puedo prevenir las alergias estacionales?"</li>
+                        <li class="list-group-item">"¿Cuáles son los síntomas de la sinusitis (infección de los senos nasales)?"</li>
+                        <li class="list-group-item">"¿Cómo puedo aliviar la acidez de estómago?"</li>
+                        <li class="list-group-item">"¿Cómo puedo tratar el dolor de espalda crónico?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Appointment Scheduling -->
+        <div id="appointment-en" class="content-section">
+            <div class="card">
+                <div class="card-header">Appointment Scheduling and Management</div>
+                <div class="card-body">
+                    <p>If a user types "appointment," the chatbot will provide a link for booking a doctor’s appointment at any hospital.</p>
+                    <h5 class="card-title">Example Queries:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"What should I do if I need to see a doctor urgently?"</li>
+                        <li class="list-group-item">"Is there a fee for missed appointments or late cancellations?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="appointment-es" class="content-section">
+            <div class="card">
+                <div class="card-header">Programación y Gestión de Citas</div>
+                <div class="card-body">
+                    <p>Si un usuario escribe "cita", el chatbot proporcionará un enlace para reservar una cita con un médico en cualquier hospital.</p>
+                    <h5 class="card-title">Consultas Ejemplares:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"¿Cómo puedo programar una cita?"</li>
+                        <li class="list-group-item">"Necesito reservar una cita con un médico."</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="appointment-fr" class="content-section">
+            <div class="card">
+                <div class="card-header">Prise en Charge et Gestion des Rendez-vous</div>
+                <div class="card-body">
+                    <p>Si un utilisateur tape "rendez-vous", le chatbot fournira un lien pour prendre un rendez-vous avec un médecin dans n'importe quel hôpital.</p>
+                    <h5 class="card-title">Exemples de Questions :</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"Comment puis-je prendre un rendez-vous ?"</li>
+                        <li class="list-group-item">"Je dois prendre un rendez-vous avec un médecin."</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="appointment-ko" class="content-section">
+            <div class="card">
+                <div class="card-header">예약 및 관리</div>
+                <div class="card-body">
+                    <p>사용자가 "예약"이라고 입력하면, 챗봇은 어떤 병원에서든 의사와의 예약을 위한 링크를 제공합니다.</p>
+                    <h5 class="card-title">예제 질문:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"어떻게 예약할 수 있나요?"</li>
+                        <li class="list-group-item">"의사와의 예약이 필요합니다."</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="appointment-ja" class="content-section">
+            <div class="card">
+                <div class="card-header">予約と管理</div>
+                <div class="card-body">
+                    <p>ユーザーが「予約」と入力すると、チャットボットはどの病院でも医師との予約リンクを提供します。</p>
+                    <h5 class="card-title">例：</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"どうやって予約できますか？"</li>
+                        <li class="list-group-item">"医師との予約が必要です。"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="appointment-de" class="content-section">
+            <div class="card">
+                <div class="card-header">Terminplanung und -verwaltung</div>
+                <div class="card-body">
+                    <p>Wenn ein Benutzer "Termin" eingibt, stellt der Chatbot einen Link zur Buchung eines Arzttermins in einem beliebigen Krankenhaus zur Verfügung.</p>
+                    <h5 class="card-title">Beispielanfragen:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"Wie kann ich einen Termin vereinbaren?"</li>
+                        <li class="list-group-item">"Ich muss einen Arzttermin buchen."</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Insurance and Billing -->
+        <div id="insurance-en" class="content-section">
+            <div class="card">
+                <div class="card-header">Insurance and Billing</div>
+                <div class="card-body">
+                    <p>Users can inquire about payment methods and online bill payment options.</p>
+                    <h5 class="card-title">Example Queries:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"Can I pay my medical bill online?"</li>
+                        <li class="list-group-item">"What are your accepted methods of payment?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="insurance-es" class="content-section">
+            <div class="card">
+                <div class="card-header">Seguros y Facturación</div>
+                <div class="card-body">
+                    <p>Los usuarios pueden preguntar sobre métodos de pago y opciones para pagar facturas en línea.</p>
+                    <h5 class="card-title">Consultas Ejemplares:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"¿Puedo pagar mi factura médica en línea?"</li>
+                        <li class="list-group-item">"¿Cuáles son los métodos de pago aceptados?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="insurance-fr" class="content-section">
+            <div class="card">
+                <div class="card-header">Assurance et Facturation</div>
+                <div class="card-body">
+                    <p>Les utilisateurs peuvent s'informer sur les méthodes de paiement et les options de paiement en ligne.</p>
+                    <h5 class="card-title">Exemples de Questions :</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"Puis-je payer ma facture médicale en ligne ?"</li>
+                        <li class="list-group-item">"Quels sont vos modes de paiement acceptés ?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="insurance-ko" class="content-section">
+            <div class="card">
+                <div class="card-header">보험 및 청구</div>
+                <div class="card-body">
+                    <p>사용자는 결제 방법과 온라인 청구서 결제 옵션에 대해 문의할 수 있습니다.</p>
+                    <h5 class="card-title">예제 질문:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"의료비를 온라인으로 지불할 수 있나요?"</li>
+                        <li class="list-group-item">"수락되는 결제 방법은 무엇인가요?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="insurance-ja" class="content-section">
+            <div class="card">
+                <div class="card-header">保険と請求</div>
+                <div class="card-body">
+                    <p>ユーザーは支払い方法やオンライン請求オプションについて問い合わせることができます。</p>
+                    <h5 class="card-title">例：</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"医療費をオンラインで支払えますか？"</li>
+                        <li class="list-group-item">"受け入れられている支払い方法は何ですか？"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="insurance-de" class="content-section">
+            <div class="card">
+                <div class="card-header">Versicherung und Abrechnung</div>
+                <div class="card-body">
+                    <p>Benutzer können sich über Zahlungsmethoden und Online-Zahlungsoptionen erkundigen.</p>
+                    <h5 class="card-title">Beispielanfragen:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"Kann ich meine Arztrechnung online bezahlen?"</li>
+                        <li class="list-group-item">"Welche Zahlungsmethoden akzeptieren Sie?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Medications and Prescriptions -->
+        <div id="medications-en" class="content-section">
+            <div class="card">
+                <div class="card-header">Medications and Prescriptions</div>
+                <div class="card-body">
+                    <p>Users can ask questions related to medications, allergies, and prescription refills.</p>
+                    <h5 class="card-title">Example Queries:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"What should I do if I have allergies to certain medications?"</li>
+                        <li class="list-group-item">"What should I do if my medication runs out before my next appointment?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="medications-es" class="content-section">
+            <div class="card">
+                <div class="card-header">Medicamentos y Recetas</div>
+                <div class="card-body">
+                    <p>Los usuarios pueden hacer preguntas relacionadas con medicamentos, alergias y reposiciones de recetas.</p>
+                    <h5 class="card-title">Consultas Ejemplares:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"¿Qué debo hacer si tengo alergias a ciertos medicamentos?"</li>
+                        <li class="list-group-item">"¿Qué debo hacer si mi medicamento se acaba antes de mi próxima cita?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="medications-fr" class="content-section">
+            <div class="card">
+                <div class="card-header">Médicaments et Ordonnances</div>
+                <div class="card-body">
+                    <p>Les utilisateurs peuvent poser des questions liées aux médicaments, aux allergies et au renouvellement des ordonnances.</p>
+                    <h5 class="card-title">Exemples de Questions :</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"Que dois-je faire si j'ai des allergies à certains médicaments ?"</li>
+                        <li class="list-group-item">"Que faire si mon médicament est épuisé avant mon prochain rendez-vous ?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="medications-ko" class="content-section">
+            <div class="card">
+                <div class="card-header">약물 및 처방</div>
+                <div class="card-body">
+                    <p>사용자는 약물, 알레르기 및 처방전 재발급과 관련된 질문을 할 수 있습니다.</p>
+                    <h5 class="card-title">예제 질문:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"특정 약물에 알레르기가 있는 경우 어떻게 해야 하나요?"</li>
+                        <li class="list-group-item">"다음 예약 전에 약물이 다 떨어지면 어떻게 해야 하나요?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="medications-ja" class="content-section">
+            <div class="card">
+                <div class="card-header">薬と処方箋</div>
+                <div class="card-body">
+                    <p>ユーザーは、薬、アレルギー、処方箋の再発行に関する質問をすることができます。</p>
+                    <h5 class="card-title">例：</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"特定の薬にアレルギーがある場合はどうすればいいですか？"</li>
+                        <li class="list-group-item">"次の予約までに薬が切れた場合はどうすればいいですか？"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="medications-de" class="content-section">
+            <div class="card">
+                <div class="card-header">Medikamente und Rezepte</div>
+                <div class="card-body">
+                    <p>Benutzer können Fragen zu Medikamenten, Allergien und Rezeptnachfüllungen stellen.</p>
+                    <h5 class="card-title">Beispielanfragen:</h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">"Was soll ich tun, wenn ich gegen bestimmte Medikamente allergisch bin?"</li>
+                        <li class="list-group-item">"Was soll ich tun, wenn meine Medikamente vor meinem nächsten Termin aufgebraucht sind?"</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        function showSection(event, sectionId) {
+            event.preventDefault();
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(sectionId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function showLanguageContent(event, lang) {
+            event.preventDefault();
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.querySelectorAll(`.content-section[id$='-${lang}']`).forEach(section => {
+                section.style.display = 'block';
+            });
+            document.querySelectorAll('.language-menu .nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+
+</html>
