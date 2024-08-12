@@ -39,8 +39,8 @@ jobs:
       with:
         context: .
         push: true
-        tags: yourdockerhubusername/polytalk-ai:latest
+        tags: sureshora/polytalk-ai:latest
 
     - name: Run Docker container
       run: |
-        docker run -d -p 3003:3003 yourdockerhubusername/polytalk-ai:latest
+        docker run -d -p 3003:3003 sureshora/polytalk-ai:latest
